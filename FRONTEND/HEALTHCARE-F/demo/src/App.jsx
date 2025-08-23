@@ -9,8 +9,8 @@ import AttendancePage from "./pages/AttendancePage";
 import StaffPage from "./pages/StaffPage";
 import DocumentsPage from "./pages/DocumentsPage";
 import AppointmentsPage from "./pages/AppointmentsPage";
-import ReportsPage from "./pages/ReportsPage";
-import SettingsPage from "./pages/SettingsPage";
+import ReportsPage from "./pages/Reports";
+import SettingsPage from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

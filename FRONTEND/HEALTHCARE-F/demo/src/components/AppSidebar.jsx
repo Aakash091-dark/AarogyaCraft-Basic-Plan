@@ -1,11 +1,12 @@
 import { NavLink, useLocation } from "react-router-dom";
-
+import { Avatar } from "@/components/ui/avatar";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -34,25 +35,43 @@ const menuItems = [
 ];
 
 export function AppSidebar() {
-  const { state } = useSidebar();
+  const { state, toggle } = useSidebar();
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const isActive = (path) => currentPath === path;
   const getNavCls = ({ isActive }) =>
     isActive
       ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
       : "hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground";
 
   return (
-    <Sidebar state={state}>
+    <Sidebar state={state} className="bg-sidebar-background text-sidebar-foreground">
+      <SidebarHeader>
+        <div className="flex items-center gap-3">
+          <Avatar className="w-12 h-12 bg-primary text-primary-foreground">
+            JD
+          </Avatar>
+          <div className="flex flex-col">
+            <p className="font-semibold text-lg text-sidebar-foreground">
+              Dr. John Doe
+            </p>
+            <p className="text-sm text-sidebar-foreground/50">
+              Admin
+            </p>
+          </div>
+        </div>
+        <SidebarTrigger onClick={toggle} />
+      </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
           <SidebarGroup>
-            <SidebarGroupLabel>Medical Dashboard</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-sidebar-foreground/50">Medical Dashboard</SidebarGroupLabel>
             <SidebarGroupContent>
               {menuItems.map((item) => (
-                <SidebarMenuItem as={NavLink} to={item.url} key={item.title}
+                <SidebarMenuItem
+                  as={NavLink}
+                  to={item.url}
+                  key={item.title}
                   className={getNavCls}
                 >
                   <item.icon className="w-4 h-4 mr-3" />

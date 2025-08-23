@@ -217,6 +217,217 @@ const Sidebar = React.forwardRef(
 )
 Sidebar.displayName = "Sidebar"
 
+const SidebarHeader = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex h-14 items-center gap-2 px-3", className)}
+    {...props}
+  />
+))
+SidebarHeader.displayName = "SidebarHeader"
+
+const SidebarContent = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex-1 overflow-auto", className)}
+    {...props}
+  />
+))
+SidebarContent.displayName = "SidebarContent"
+
+const SidebarFooter = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("mt-auto flex flex-col p-3", className)}
+    {...props}
+  />
+))
+SidebarFooter.displayName = "SidebarFooter"
+
+const SidebarGroup = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col gap-1 p-1", className)}
+    {...props}
+  />
+))
+SidebarGroup.displayName = "SidebarGroup"
+
+const SidebarGroupLabel = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "px-2 py-1 text-xs font-medium text-muted-foreground",
+      className
+    )}
+    {...props}
+  />
+))
+SidebarGroupLabel.displayName = "SidebarGroupLabel"
+
+const SidebarGroupAction = React.forwardRef(({ className, ...props }, ref) => (
+  <Button
+    ref={ref}
+    variant="ghost"
+    size="icon"
+    className={cn("h-6 w-6", className)}
+    {...props}
+  />
+))
+SidebarGroupAction.displayName = "SidebarGroupAction"
+
+const SidebarGroupContent = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col gap-1", className)}
+    {...props}
+  />
+))
+SidebarGroupContent.displayName = "SidebarGroupContent"
+
+const SidebarMenu = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col gap-1", className)}
+    {...props}
+  />
+))
+SidebarMenu.displayName = "SidebarMenu"
+
+const SidebarMenuItem = React.forwardRef(({ className, ...props }, ref) => (
+  <Button
+    ref={ref}
+    variant="ghost"
+    className={cn("h-8 justify-start", className)}
+    {...props}
+  />
+))
+SidebarMenuItem.displayName = "SidebarMenuItem"
+
+const SidebarMenuButton = React.forwardRef(({ className, ...props }, ref) => (
+  <Button
+    ref={ref}
+    variant="ghost"
+    className={cn("h-8 w-full justify-start", className)}
+    {...props}
+  />
+))
+SidebarMenuButton.displayName = "SidebarMenuButton"
+
+const SidebarMenuSub = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col gap-1", className)}
+    {...props}
+  />
+))
+SidebarMenuSub.displayName = "SidebarMenuSub"
+
+const SidebarMenuSubButton = React.forwardRef(
+  ({ className, ...props }, ref) => (
+    <Button
+      ref={ref}
+      variant="ghost"
+      className={cn("h-8 w-full justify-start", className)}
+      {...props}
+    />
+  )
+)
+SidebarMenuSubButton.displayName = "SidebarMenuSubButton"
+
+const SidebarMenuSubItem = React.forwardRef(({ className, ...props }, ref) => (
+  <Button
+    ref={ref}
+    variant="ghost"
+    className={cn("h-8 justify-start", className)}
+    {...props}
+  />
+))
+SidebarMenuSubItem.displayName = "SidebarMenuSubItem"
+
+const SidebarMenuBadge = React.forwardRef(({ className, ...props }, ref) => (
+  <span
+    ref={ref}
+    className={cn(
+      "ml-auto rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground",
+      className
+    )}
+    {...props}
+  />
+))
+SidebarMenuBadge.displayName = "SidebarMenuBadge"
+
+const SidebarMenuAction = React.forwardRef(({ className, ...props }, ref) => (
+  <Button
+    ref={ref}
+    variant="ghost"
+    size="icon"
+    className={cn("h-6 w-6", className)}
+    {...props}
+  />
+))
+SidebarMenuAction.displayName = "SidebarMenuAction"
+
+const SidebarMenuSkeleton = React.forwardRef(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn("flex flex-col gap-1", className)}
+      {...props}
+    />
+  )
+)
+SidebarMenuSkeleton.displayName = "SidebarMenuSkeleton"
+
+const SidebarSeparator = React.forwardRef(({ className, ...props }, ref) => (
+  <Separator ref={ref} className={cn("my-1", className)} {...props} />
+))
+SidebarSeparator.displayName = "SidebarSeparator"
+
+const SidebarInput = React.forwardRef(({ className, ...props }, ref) => (
+  <Input
+    ref={ref}
+    className={cn("h-8", className)}
+    {...props}
+  />
+))
+SidebarInput.displayName = "SidebarInput"
+
+const SidebarTrigger = React.forwardRef(({ className, ...props }, ref) => {
+  const { toggleSidebar } = useSidebar()
+  return (
+    <Button
+      ref={ref}
+      variant="ghost"
+      size="icon"
+      className={cn("h-8 w-8", className)}
+      onClick={toggleSidebar}
+      {...props}
+    >
+      <PanelLeft />
+    </Button>
+  )
+})
+SidebarTrigger.displayName = "SidebarTrigger"
+
+const SidebarRail = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col items-center gap-1 p-1", className)}
+    {...props}
+  />
+))
+SidebarRail.displayName = "SidebarRail"
+
+const SidebarInset = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("p-2", className)}
+    {...props}
+  />
+))
+SidebarInset.displayName = "SidebarInset"
+
 // (rest of the components like SidebarTrigger, SidebarRail, SidebarInset, SidebarMenu etc. remain unchanged except type annotations removed)
 // due to length, they follow same pattern as original .tsx but without types
 // ----------------------

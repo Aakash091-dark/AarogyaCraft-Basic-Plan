@@ -53,29 +53,47 @@ const FileUpload = () => {
         <CardTitle>File Upload</CardTitle>
       </CardHeader>
       <CardContent>
-        <div>
-          <Button onClick={handleFileUpload} disabled={isUploading}>
-            <Upload className="mr-2" />
-            {isUploading ? "Uploading..." : "Upload File"}
+        <div className="border-2 border-dashed border-muted rounded-lg p-6 text-center mb-6">
+          <Upload className="mx-auto h-12 w-12 text-muted-foreground" />
+          <p className="mt-4 text-muted-foreground">Drag & drop files here, or click to select files</p>
+          <Button onClick={handleFileUpload} disabled={isUploading} className="mt-4">
+            {isUploading ? "Uploading..." : "Select Files"}
           </Button>
-          <div>Support for PDF, JPG, PNG files up to 1GB</div>
-          {isUploading && <Progress value={uploadProgress} />}
+          <p className="text-xs text-muted-foreground mt-2">Support for PDF, JPG, PNG files up to 1GB</p>
+          {isUploading && <Progress value={uploadProgress} className="mt-4" />}
         </div>
         <div>
-          <h4 className="mt-4 mb-2">Recent Files</h4>
-          {recentFiles.map((file) => {
-            const Icon = getFileIcon(file.type);
-            return (
-              <div key={file.id} className="flex justify-between items-center py-2">
-                <Icon className="w-5 h-5 mr-3" />
-                <div>
-                  {file.name} ({file.size})
-                  <Badge className={getCategoryColor(file.category)}>{file.category}</Badge>
+          <h4 className="text-lg font-semibold mb-4">Recent Files</h4>
+          <div className="space-y-4">
+            {recentFiles.map((file) => {
+              const Icon = getFileIcon(file.type);
+              return (
+                <div key={file.id} className="flex justify-between items-center p-3 bg-muted/50 rounded-lg">
+                  <div className="flex items-center flex-1 min-w-0 mr-4">
+                    <Icon className="w-6 h-6 mr-4 text-primary flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <div className="font-medium truncate">{file.name}</div>
+                      <div className="text-sm text-muted-foreground truncate">
+                        {file.patient} - {file.size}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <Badge className={`${getCategoryColor(file.category)}`}>{file.category}</Badge>
+                    <div className="text-sm text-muted-foreground">{file.uploadDate}</div>
+                    <div className="flex space-x-1">
+                      <Button variant="ghost" size="icon">
+                        <Download className="w-4 h-4" />
+                      </Button>
+                      <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive">
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
                 </div>
-                <div>{file.uploadDate}</div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </CardContent>
     </Card>
