@@ -10,6 +10,7 @@ router.delete('/staff/:id', adminController.deleteStaff);
 
 // Report routes
 router.get('/reports', adminController.listReports);
+router.post("/reports", adminController.createReport);
 router.put('/reports/:id', adminController.updateReport);
 router.delete('/reports/:id', adminController.deleteReport);
 
