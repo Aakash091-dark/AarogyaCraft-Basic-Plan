@@ -48,6 +48,18 @@ const listReports = async (req, res) => {
   }
 };
 
+const createReport = async (req, res) => {
+  try {
+    const report = await reportModel.createReport(req.body);
+    res.json(report);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+
+
 const updateReport = async (req, res) => {
   try {
     const report = await reportModel.updateReport(req.params.id, req.body);
@@ -72,6 +84,7 @@ module.exports = {
   updateStaff,
   deleteStaff,
   listReports,
+  createReport,
   updateReport,
   deleteReport,
 };
