@@ -14,6 +14,15 @@ const getAllReports = async () => {
   return result.rows;
 };
 
+// Get all reports of a specific user (patient)
+const getAllReportsByUserId = async (patient_id) => {
+  const result = await pool.query(
+    `SELECT * FROM reports WHERE patient_id = $1 ORDER BY created_at DESC`,
+    [patient_id]
+  );
+  return result.rows;
+};
+
 const updateReport = async (id, report) => {
   const { title, content } = report;
   const result = await pool.query(
