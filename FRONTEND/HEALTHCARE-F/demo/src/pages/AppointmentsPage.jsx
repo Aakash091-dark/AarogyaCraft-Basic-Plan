@@ -138,7 +138,7 @@ const AppointmentsPage = () => {
   const upcomingAppointments = appointments.filter(apt => apt.date > "2024-01-22");
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Appointments</h1>
